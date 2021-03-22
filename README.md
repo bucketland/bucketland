@@ -1,6 +1,10 @@
+<center>
+
 # bucketland
 
 ![](public/images/bucket-initial.svg)
+
+</center>
 
 ## Introduction
 
@@ -75,7 +79,9 @@ the abstraction makes sense, such as:
   for smaller organizations as well.
 - **Repositories and branches in version control** –
   These are buckets of code. [BitBucket][bb] gets it!
-- **Mapped API resources** – 
+- **Mapped API resources** – The data in an API could
+  be mapped to paths in a bucket, like various things
+  can be mapped on Fuse.
 
 ...as well as providing tools and answers for common
 things involving buckets:
@@ -93,17 +99,72 @@ things involving buckets:
   show up in the main object. The idea here is to take
   a slice and put it into a separate bucket (such as
   a git repository) or a Markdown file's data.
-- **Embed** – A website can embed another website
-  inside of it through an iFrame.
+- **Embed** – An origin can embed another origin
+  inside of it through an iFrame. They are still
+  different origins, but appear as one site. It is true
+  that one bucket cannot be nested inside another
+  bucket, but they should be nestable through some
+  light virtualization.
 - **Markdown code blocks** – A markdown code block can
   have a file embedded in it, using a code block. It
   should be useful to map it to an object in a bucket.
   Other things in Markdown like tables can also be
   mapped to files. This can support Literate Programming.
+- **Deep linking** - Link to a path in a JSON object
 
-## Goals
+## Project Ideas
 
-
+- Treat data in a Cloud Object Storage bucket and in a
+  git repository the same, in a fullstack web application
+- Keep track of when data inside a bucket is accessed,
+  inside of a web application's database
+- Share viewing of data in a bucket, with and without
+  using pre-signed requests from the storage provider
+- Share editing data in a bucket, with and without using
+  pre-signed requests from the storage provider
+- Provide a simple editor for a list of files in a bucket
+  that uses very little custom code, and where View Source
+  works and the API can be quickly self hosted or its source
+  inspected (I think Vercel does), so it can quickly be
+  audited and trusted by a developer
+- Synchronize data between a git repo and Cloud Storage
+- Provide toast notifications when something changes in
+  a bucket
+- View data in a bucket, with deep linking
+- Edit data in a bucket, with preview
+- Edit data in two different buckets, side by side
+- Override some of the data in a bucket with edits in
+  LocalStorage
+- Synchronize data between two browsers using Yjs,
+  ShareDB or similar over WebSockets or WebRTC
+- Synchronize data between iframes
+- Synchronize data in a Markdown file with objects in
+  a bucket - if the `README.md` file has `server.js`,
+  place that `server.js` in the directory with the
+  README
+- Use Markdown plugins to replace blocks in Markdown with
+  components created from the files extracted from the
+  Markdown
+- OAuth into two different accounts in the same window,
+  each in a different iframe
+- Browse two sites side by side at the same time with
+  virtual history, using window.location.replace to keep
+  the browser's back button from interfering
+- Use postmessage to pass changes in color theme down to
+  iframes (done on [notebook.resources.co][nrc])
+- Encrypt OAuth tokens and keys so neither the browser
+  nor the API has the full key - have the API or the
+  browser store the key. When sending background requests,
+  have the background request have part of the key, so the
+  API can't use the OAuth token without the job queue
+  initiating the request
+- Load and save environment variables from the database
+  in a Jamstack project, by using an encryption key stored
+  in the environment, so they can be edited dynamically,
+  and provide a way to migrate them to being stored in
+  with the application host. This is probably better than
+  using the host's API until more fine-grained access is
+  available.
 
 [jwt]: https://jwt.io/
 [minio]: https://min.io/
@@ -112,3 +173,4 @@ things involving buckets:
 [letsenc]: https://letsencrypt.org/
 [oauth5]: https://www.youtube.com/watch?v=KT8ybowdyr0
 [bb]: https://bitbucket.org/product/
+[nrc]: https://notebook.resources.co/
