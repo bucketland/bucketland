@@ -1,10 +1,8 @@
-<center>
+<h1 align="center">🏖️ bucketland 🌊</h1>
 
-# bucketland
-
-![](public/images/bucket-initial.svg)
-
-</center>
+<p align="center">
+  <img src="public/images/bucket-initial.svg" title="bucket.land initial logo">
+</p>
 
 ## Introduction
 
