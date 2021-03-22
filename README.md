@@ -151,11 +151,14 @@ things involving buckets:
 - Use postmessage to pass changes in color theme down to
   iframes (done on [notebook.resources.co][nrc])
 - Encrypt OAuth tokens and keys so neither the browser
-  nor the API has the full key - have the API or the
-  browser store the key. When sending background requests,
-  have the background request have part of the key, so the
-  API can't use the OAuth token without the job queue
-  initiating the request
+  nor the API has the full key - have the API store the
+  encryption key and the browser store the encrypted
+  values, or have the browser store the encryption key
+  and have the API store the encrypted values. When
+  sending background requests, have the background
+  request contain part of the key, so the API can't use
+  the OAuth token without the job queue initiating the
+  request.
 - Load and save environment variables from the database
   in a Jamstack project, by using an encryption key stored
   in the environment, so they can be edited dynamically,
